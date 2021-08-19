@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "basededatoremota-6fefc": {
+      "hosting": {
+        "task": [
+          "basededatoremota-6fefc"
+        ]
+      }
+    }
+  }
+}

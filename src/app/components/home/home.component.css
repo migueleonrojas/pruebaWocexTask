@@ -1,0 +1,50 @@
+.bg-light {
+  background-color: #93b2d1 !important;
+}
+
+.mailUser{
+
+  position: absolute;
+  right: 45px;
+
+}
+
+
+
+#description{
+  resize: none;
+}
+.containerTask{
+
+  background-color: rgb(66, 153, 142);
+  color: rgb(255, 255, 255);
+  height: 500px;
+  border-right:6px solid rgb(255, 255, 255) ;
+
+}
+
+.listTask{
+
+  background-color: rgb(44, 177, 159);
+  color: rgb(255, 255, 255);
+  height: 500px;
+  overflow: auto;
+
+
+}
+
+.sesion{
+  cursor: pointer;
+}
+
+.list{
+
+  height: 40%;
+  overflow: auto;
+  background-color: rgb(44, 161, 165);
+}
+.updatelist{
+
+  border-top: 6px solid rgb(255, 255, 255);
+
+}

@@ -1,0 +1,37 @@
+
+
+
+<div class="container login col-5 row align-items-center justify-content-center">
+
+  <form [formGroup]="formLogin" class="col-12">
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" formControlName="mail"
+      id="emailInput" aria-describedby="emailHelp">
+      <div class="errorCodigo" *ngIf="formLogin.get('mail')!.hasError('required') && formLogin.get('mail')!.touched">
+        * El campo mail no debe estar vacio
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="password"
+      id="passwordInput">
+      <div class="errorCodigo" *ngIf="formLogin.get('password')!.hasError('required') && formLogin.get('password')!.touched">
+        * El campo password no debe estar vacio
+      </div>
+    </div>
+
+    <div class="mb-3 text-center">
+      <button type="submit" class="btn btn-primary" (click)="loginUser()">Iniciar sesion</button>
+    </div>
+
+    <div *ngIf="respuestaLogin!=null" class="mb-3 text-center">
+      Las credenciales ingresadas estan erroneas
+    </div>
+
+
+  </form>
+
+</div>

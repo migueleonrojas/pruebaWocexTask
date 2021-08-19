@@ -1,0 +1,175 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand sesion" (click)="logout()">Cerrar Sesion</a>
+  <div class="mailUser">Usuario:{{mailUser.usuario.mail}}</div>
+
+</nav>
+
+<div class="container">
+  <div class="row ">
+    <div class="col-md-6 mb-6 containerTask">
+
+        <h2 class="text-center">Agregar Tareas</h2>
+
+        <form [formGroup]="formTask">
+          <div class="mb-3">
+            <label for="email" class="form-label">Nombre de la tarea</label>
+            <input type="text" class="form-control"
+            id="taskName" aria-describedby="emailHelp" formControlName="name">
+            <div class="errorCodigo" *ngIf="formTask.get('name')!.hasError('required') && formTask.get('name')!.touched">
+              * El campo Nombre no debe estar vacio
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Descripcion</label>
+            <textarea class="form-control" id="description" rows="6" formControlName="description"></textarea>
+            <div class="errorCodigo" *ngIf="formTask.get('description')!.hasError('required') && formTask.get('description')!.touched">
+              * El cuadro de texto descripcion no puede estar vacio
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label>Estatus</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="estatus" formControlName="estatus" id="estatusPendiente" value="Pendiente" checked>
+              <label class="form-check-label" for="estatus">
+                Pendiente
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="estatus" formControlName="estatus" id="estatusCompletada" value="Completada">
+              <label class="form-check-label" for="estatus">
+                Completada
+              </label>
+            </div>
+
+            <div class="errorCodigo" *ngIf="formTask.get('estatus')!.hasError('required') && formTask.get('estatus')!.touched">
+              * Debe marcar un estatus
+            </div>
+
+          </div>
+
+          <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-primary mb-2" (click)="createTask(formTask)">Crear Tarea</button>
+          </div>
+
+
+        </form>
+
+    </div>
+
+    <div class="col-md-6 mb-6 listTask container">
+
+      <h2 class="text-center">Lista de tareas</h2>
+
+      <div class="row list">
+
+        <div class="col-12 text-center taskZone row">
+          <table class="table table-sm table-hover">
+            <thead>
+
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Estatus</th>
+              <th>*</th>
+
+            </thead>
+
+            <tbody>
+
+              <tr *ngFor="let task of tasks">
+                <td><div class="elem">{{task.Name}}</div></td>
+                <td><div class="elem">{{task.Description}}</div></td>
+                <td><div class="elem">{{task.Estatus}}</div></td>
+                <td>
+                  <a class="btn" (click)="editTask(task)">
+                      <i class="fa fa-pencil-square-o"></i>Editar
+                  </a>
+
+                  <a class="btn" (click)="deleteTask(task)">
+                      <i class="fa fa-trash-square-o"></i>Eliminar
+                  </a>
+              </td>
+              </tr>
+
+
+            </tbody>
+
+          </table>
+
+
+        </div>
+
+      </div>
+
+      <div class="row updatelist">
+
+        <div class="col-md-12 mb-12">
+          <h2 class="text-center">Editar tarea</h2>
+
+          <form [formGroup]="formTaskUpdate">
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Nombre de la tarea</label>
+              <input type="text" class="form-control"
+              id="taskName" aria-describedby="emailHelp" formControlName="nameUpdate">
+
+              <div class="errorCodigo" *ngIf="formTaskUpdate.get('nameUpdate')!.hasError('required') && formTaskUpdate.get('nameUpdate')!.touched">
+                * El campo Nombre no debe estar vacio
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Descripcion</label>
+              <textarea class="form-control" id="description" rows="6" formControlName="descriptionUpdate"></textarea>
+              <div class="errorCodigo" *ngIf="formTaskUpdate.get('descriptionUpdate')!.hasError('required') && formTaskUpdate.get('descriptionUpdate')!.touched">
+                * El cuadro de texto descripcion no puede estar vacio
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label>Estatus</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="estatusUpdate" formControlName="estatusUpdate" id="estatusPendiente" value="Pendiente" checked>
+                <label class="form-check-label" for="estatus">
+                  Pendiente
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="estatusUpdate" formControlName="estatusUpdate" id="estatusCompletada" value="Completada">
+                <label class="form-check-label" for="estatus">
+                  Completada
+                </label>
+              </div>
+
+              <div class="errorCodigo" *ngIf="formTaskUpdate.get('estatusUpdate')!.hasError('required') && formTaskUpdate.get('estatusUpdate')!.touched">
+                * Debe marcar un estatus
+              </div>
+
+            </div>
+
+            <div class="mb-3 text-center">
+              <button type="submit" class="btn btn-primary mb-2" (click)="updatetaskselected(formTaskUpdate)">Actualizar Tarea</button>
+            </div>
+
+          </form>
+        </div>
+
+
+
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
